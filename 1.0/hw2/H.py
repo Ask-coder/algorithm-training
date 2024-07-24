@@ -36,12 +36,3 @@ if prod_1 > prod_2:
     print(res[3], res[4], res[5])
 else:
     print(res[0], res[1], res[5])
-
-
-    
-    
-    
-
-
-
-
