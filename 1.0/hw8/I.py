@@ -1,25 +1,7 @@
-from collections import deque
 
-def bfs(human, tree):
-    cnt = 0
-    queue = deque()
-    visited = set()
+import sys
 
-    if human not in tree:
-        return cnt
-    queue = deque()
-    queue.extend(tree[human])
-
-    while queue:
-        cnt += 1
-        item = queue.popleft()
-        visited.add(item)
-        if item in tree:
-            for i in tree[item]:
-                if i not in visited:
-                    queue.append(i)
-                    visited.add(i) 
-    return cnt
+sys.setrecursionlimit(100000)
 
 
 if __name__ == '__main__':
@@ -30,10 +12,33 @@ if __name__ == '__main__':
         child, parent = input().split()
         humans.add(child)
         humans.add(parent)
+        
         if parent not in tree:
             tree[parent] = set()
-        tree[parent].add(child)
-            
-for human in sorted(humans):
-    print(human, bfs(human, tree))
+        tree[parent].add(child)            
+
+
+res = {}
+def count(human, root):
+    if human in res:
+        return res[human] 
+
+    if human not in root:
+        return 0
+    
+    cnt = len(root[human])
+    for item in root[human]:
+        cnt += count(item, root)
+    return cnt
+
+
+for human in humans:
+    res[human] = count(human, tree)    
+
+
+for key in sorted(res.keys()):
+    print(key, res[key])
+
+
+
 
