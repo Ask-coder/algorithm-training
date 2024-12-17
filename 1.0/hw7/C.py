@@ -15,7 +15,7 @@ for i in range(len(events)):
     if events[i][1] == -1:
         cnt += 1
         ans_cnt = max(cnt, ans_cnt)
-    elif events[i][1] == 1:
+    elif events[i][1] == 1::
         cnt -= 1
 
 for i in range(len(events)):

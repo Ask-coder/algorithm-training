@@ -31,7 +31,6 @@ if __name__ == '__main__':
             insert(lst[i], tree)
 
     firstmax = find_first_max(tree)
-    print(firstmax)
     print(firstmax[3] if firstmax[1]is None else find_first_max(firstmax[1])[0])
             
 

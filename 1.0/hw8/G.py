@@ -14,7 +14,7 @@ def insert(root, value):
 
 def traverse(root, h_l, h_r):
     if root is None:
-        return h_l
+        return 
     h_l += traverse(root[0], h)
     print(root[2], h_l, h_r)
     h_r += traverse(root[1], h)
